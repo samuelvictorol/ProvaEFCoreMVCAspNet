@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ProvaProjeto2.Models.Ferramenta>
+
+@{
+    ViewData["Title"] = "Ferramentas";
+}
+<div class="ferramentas-wrapper">
+    <h1>Ferramentas</h1>
+
+    <p>
+        <a asp-action="Create"><img src="/img/addicon.png" alt="add ferramenta" /></a>
+    </p>
+    <table class="table-index table bg-light">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeFerramenta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Disponivel)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeFerramenta)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Disponivel)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-outline-info" asp-route-id="@item.FerramentaId">Editar</a> |
+                        <a asp-action="Details" class="btn btn-outline-secondary" asp-route-id="@item.FerramentaId">Detalhes</a> |
+                        <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.FerramentaId">Deletar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

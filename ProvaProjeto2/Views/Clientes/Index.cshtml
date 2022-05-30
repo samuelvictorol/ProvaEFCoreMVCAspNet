@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ProvaProjeto2.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Clientes";
+}
+
+<h1>Gerenciar Clientes</h1>
+
+<p>
+    <a asp-action="Create"><img src="/img/addicon.png" alt="add cliente" style="height: 3em" /></a>
+</p>
+<table class="table-index table bg-light">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CPF)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CPF)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-action="Edit" class="btn btn-outline-info" asp-route-id="@item.ClienteId">Editar</a> |
+                <a asp-action="Details" class="btn btn-outline-secondary"    asp-route-id="@item.ClienteId">Detalhes</a> |
+                <a asp-action="Delete" class="btn btn-outline-danger" asp-route-id="@item.ClienteId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
